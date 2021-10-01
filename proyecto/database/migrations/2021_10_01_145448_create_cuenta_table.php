@@ -14,8 +14,10 @@ class CreateCuentaTable extends Migration
     public function up()
     {
         Schema::create('cuenta', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+	    $table->id();
+	    $table->string('email')->unique();
+	    $table->string('password'); 
+	    $table->timestamps();
         });
     }
 

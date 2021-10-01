@@ -14,7 +14,13 @@ class CreateAdministrativosTable extends Migration
     public function up()
     {
         Schema::create('administrativos', function (Blueprint $table) {
-            $table->id();
+	    $table->id();
+	    $table->string('nombre');
+	    $table->string('apellido_pat');
+	    $table->string('apellido_mat');
+	    $table->integer('numero_celular');
+	    $table->unsignedBigInteger('id_cuenta');
+	    $table->foreign('id_cuenta')->references('id')->on('cuenta');
             $table->timestamps();
         });
     }
