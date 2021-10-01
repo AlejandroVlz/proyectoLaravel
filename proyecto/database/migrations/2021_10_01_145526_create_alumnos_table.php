@@ -15,7 +15,19 @@ class CreateAlumnosTable extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+	    $table->string('nombre');
+	    $table->string('apellido_pat');
+	    $table->string('apellido_mat');
+	    $table->integer('numero_celular');
+	    $table->unsignedBigInteger('id_cuenta');
+	    $table->foreign('id_cuenta')->references('id')->on('cuenta');
+
+	    $table->unsignedBigInteger('id_grupo');
+	    $table->foreign('id_grupo')->references('id')->on('grupo');
+
+	    $table->unsignedBigInteger('id_carrera');
+	    $table->foreign('id_carrera')->references('id')->on('carreras');
+	    $table->timestamps();
         });
     }
 

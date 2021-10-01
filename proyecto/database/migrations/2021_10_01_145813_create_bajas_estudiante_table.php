@@ -15,7 +15,15 @@ class CreateBajasEstudianteTable extends Migration
     {
         Schema::create('bajas_estudiante', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+	    $table->unsignedBigInteger('id_alumno');
+	    $table->foreign('id_alumno')->references('id')->on('alumnos');
+	    $table->unsignedBigInteger('id_carrera');
+	    $table->foreign('id_carrera')->references('id')->on('carreras');
+	    $table->unsignedBigInteger('id_administrativo');
+	    $table->foreign('id_administrativo')->references('id')->on('administrativos');
+	    $table->enum('motivo_baja', ['economicos', 'extras'. 'cambio_escuela', 'matrimonio']);
+	    $table->timestamps();
+
         });
     }
 
